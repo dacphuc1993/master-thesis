@@ -8,7 +8,10 @@
 
 % Use the UniMelb Dissertation Template
 \usepackage{style/uomthesis}
-
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
 % For drafts uncomment the following line
 %\usepackage[light,timestamp,first]{draftcopy}
 
@@ -109,15 +112,10 @@
 		%
 		% Uncomment the following line to produce a
 		% bibliography list of all entries in the bib database
-		%\nocite{*}
+		\nocite{*}
 		%
-		\bibliography{%
-			% Place your bib database files here, for example:
-			%bib/strings,%
-			%bib/wireless,%
-			%bib/dsl,%
-			%bib/selfpubs%
-		}
+		\bibliographystyle{plain}
+		\bibliography{bib/My Collection}
 	\end{backmatter}
 
 \end{document}
