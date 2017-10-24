@@ -4,8 +4,8 @@
 %%    12 Jul 2007 - John Papandriopoulos - Converted into template
 %%
 
-\chapter{Return of the Jedi}
-	\label{chapter:return-of-the-jedi}%
+\chapter{Methodology}
+	\label{chapter:methodology}%
 	%
 
 % preferred location for figures in this chapter
@@ -13,13 +13,22 @@
 
 %=========================================================================
 
-\begin{synopsis}
-	Synopsis.
-\end{synopsis}
+%\begin{synopsis}
+%	Synopsis.
+%\end{synopsis}
 
 %=========================================================================
 
-\section{Introduction}
-
-Use the force Luke...
+\section{Introduction to Reddit}
+Reddit is a prominent social networking sites with an extremely large user base. Founded in 2005, Reddit has 234 million active users and attracts 542 million visitors per month as of 2017. In term of website ranking based on number of visitor, Reddit ranked 4\textsuperscript{th} in U.S and 9\textsuperscript{th} in the world \cite{Alexa2017}. Reddit aggregates news from many sources including itself, allowing users to discuss by commenting on the original post which is hosted on the sites as a thread. Users can interact with a submission by voting the post/comment up or down to express whether they like or dislike the post/comment. The score of a post (i.e. difference between the number of upvote and downvote for the post) determine the position of the post on the page. The more score a post get, the higher position of the post. This feature allows high scored posts to be highly visible to visitors due to being on top of the page. Figure~\ref{fig:reddit} shows a screenshot of Reddit front page at the time of writing. On front page, posts have gathered high number of upvote in short period of time which can be up to tens of thousand upvotes in several hours.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{img/reddit}
+\caption{Interface of Reddit front page.} 
+\label{fig:reddit}
+\end{figure} 
+Reddit is organized by areas of interest. Each area of interest or topic has each own space called "subreddit" for posting and discussion, much like a subforum. Convention for writting name of a subreddit is adding "r/" before the name of subreddit to indicate direct link to that subreddit (e.g. r/movies refers to Movies subreddit - https://www.reddit.com/r/movies/).Every subreddit is moderated by moderator to ensure posts and commets follow guideline and do not digress from the topic. As moderation entails substantial monitoring, a moderator is either a human or an automated bot. To create a new subreddit, a Reddit user (also known as redditor) must meet specific criteria: his account must be at least 30 days old and his account must accumulate enough post "karma". "Karma" reflects how much a redditor contribute to Reddit community, "karma" can be earned by getting upvotes for external link posted or upvotes for comments. The exact number of karma required for creating new subreddit is unknown to normal users, only admins know. Reddit is very diverse as subreddit topics include various fields ranging from general themes such as science, sport, news, movies, food to specific themes namely r/Moviesinthemaking, r/harrypotter, r/PoliticalHumor.\\
+As mentioned in the previous section, Reddit provides a free API\footnote{https://www.reddit.com/dev/api/} for any developers who want to build applications that need to crawl posts and comments on Reddit. There are a variety of scripts that users developed using Reddit API: auto reply bot, auto crawler, auto unit converter, image resizing bot, external link thumbnail displaying bot, message reminder, etc. Most of these bot operate by the principle: getting posts and comments in real time, processing according to programmed procedure, producing output which usually is a comment. For example, a grammar correcting bot crawl all posts/comments in real time, whenever it detects a grammar mistake (say "could of") in a post, it replies to that post explaining and correcting to "could have". Another useful example is unit converter which convert unit from imperial system to metric system since most posts from American use imperial unit while most non-U.S readers are familiar with metric unit.  
+\section{Data collection}
+Reddit API is a great way to collect Reddit data. However, in this experiment we are using Google BigQuery\footnote{https://cloud.google.com/bigquery/} as an alternative to crawl posts and comments. 
 
