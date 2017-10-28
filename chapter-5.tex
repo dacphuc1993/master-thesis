@@ -4,8 +4,8 @@
 %%    12 Jul 2007 - John Papandriopoulos - Converted into template
 %%
 
-\chapter{The Phantom Menace}
-	\label{chapter:phantom-menace}%
+\chapter{Conclusion}
+	\label{chapter:conclusion}%
 	%
 
 % preferred location for figures in this chapter
@@ -13,13 +13,40 @@
 
 %=========================================================================
 
-\begin{synopsis}
-	Synopsis.
-\end{synopsis}
+%\begin{synopsis}
+%	Synopsis.
+%\end{synopsis}
 
 %=========================================================================
 
-\section{Introduction}
+\section{Summary of chapters}
 
-Use the force Luke...
+\textbf{Chapter 1} gives readers overview of emergence of social networking sites and how it opens new research directions in mental health field. An examples of conventional mental health intervention programs shifting to online therapies is use of school-based programs has decreased since web-based applications offer more flexible choices in providing information without demanding substantial resources like programs in school setting.\\
+ Brief overview of recent studies in online mental health are presented. From monitoring mental well-being of individuals to analyzing search queries data of an entire geographical region, many studies with different scales facilitate the development of mental health support apps. Several potential sources of data for research, which are chat-based interventions (mobile apps, text message service, web chat) and online discussion forums, are listed in the following section.\\
+Computer Science have paved way for automated large scale data analysis, reducing human workload in many tasks. The interdisciplinary field of study between Computer Science and Psychology mainly focused on utilizing NLP and ML to solve problems that are traditionally done by human or to observe behaviours in large population. The main theme of this thesis is suicide and we tried to delve into attempts to analyze suicidal people in several aspects. The main purpose of this field is to use machine prediction to aid suicide prevention programs.\\
+
+\textbf{Chapter 2} presents a detailed literature review on application of Computer Science in suicide research. Firstly, the chapter informs readers of four types and process of suicide. Secondly, this chapter introduces the 2011 i2b2 NLP Challenge which asked the participants to assign emotions to each sentence of suicide notes. There are several participating teams published papers explaining their approaches. We summarized and compared these approaches plus reported results of each team.\\
+In the third place, we present the main trends of analyzing online social network posts for predicting suicide numbers and spotting at-risk individuals. The reported number of suicide cases in South Korea is matched with machine prediction based on dysphoria blog posts, economical and meteorological variables with a high accuracy of 0.83. Another study observed correlation between number of suicidal Twitter posts and real numbers of suicide reported.\\
+Contagion effect of celebrity suicide, a well-known effect in psychology literature, has been inspected on Reddit and relevant evidences was confirmed. Researchers made efforts to develop systems that aid human in suicide prevention. Most of these attempts is to try to pinpoint at-risk individuals on online social media platforms. Twitter and Reddit are two prominent sites that have been frequently serve as sources of data in these attempts. Four studies using data from the two websites are introduced and one of them established the approach used in this thesis.\\
+
+\textbf{Chapter 3} describes tools and methods used for the experiment of this thesis. We made use of NLTK, scikit-learn, VADER. Besides, we listed some popular NLP techniques namely tokenization, stopwords removal and part of speech tagging.\\
+
+\textbf{Chapter 4} presents the research questions and the experiment trying to address those questions. We chose Reddit as our source of data and introduced general features of it which are "karma" (serve as contribution point), API, post voting. Organizational structure of Reddit allows redditors to match their interest to various subreddits and it facilitates data collection for research. Researchers can access data for free by using the official Reddit's API to crawl posts and comments corresponding to topics of interest. An alternative way to collect data is using Google BigQuery as all posts and comments of Reddit are shared on it monthly plus it is faster and easier to use than the API due to power of cloud computing platform of Google and comprehensive standard SQL queries interface. \\
+Next, we elaborate how data is filter through criteria to form a big dataset containing posts and comments of relevant mental health subreddits over two specific periods of time. To prepare for the classification task, we have to construct two classes of users: redditors who do not post in the suicide support subreddit SW and redditors who do so after previously posted in mental health discussion subreddits. Feature selection is one of the step distinguishing our work from the prior work on which this approach based. We introduced a new set of features contained polarity score from sentiment analysis of the posts and comments. Moreover, we dropped the idea of using all unigrams, bigrams in posts as features. Instead, a set of tokens which is verified to have high treatment effect (decrease/increase the likelihood of posting in SW) is used as substitute. \\
+We specified two settings of the experiment: one is theoretical setting where two user classes are balanced (by sampling MH group) and the other is realistic setting with huge class imbalance. Evaluation metrics for this task is standard Precision, Recall, F1 because our binary classification task is typical supervised learning task. ML algorithms for this task are SVM, Na\"ive Bayes and Logistic regression, performing 10-fold cross validation. We reported results of statistical testing of mean differences between two populations and noticed several patterns in posting activity of MH$\rightarrow$SW users. In general, MH$\rightarrow$SW users show poor linguistic ability reflected by readability index, high self-focus language just like works in literature suggested. In addition, we also realized that MH$\rightarrow$SW users are posting in mental health subreddit as well as expressing more negative, pessimistic language.\\
+The results of the classification task are reported. In theoretical setting, Logistic regression classifier gave the best result overall with highest averaged F1 = 0.70; the precision and recall are high as well (P = 0.76, R = 0.66). SVM classifier generally produced low precision (0.54 - 0.70) but high recall (0.60 - 0.94). Na\"ive Bayes classifier performed similar to SVM with the first four sets of features but reverse around on 'content' and combined sets. In realistic setting, Logistic regression and SVM classifiers failed to predict true positive users as all prediction outcomes went to MH users. In contrast, Na\"ive Bayes classifier returned good amount of true positives but even greater number of false positive cases.\\
+Finally, we discussed the results obtained, their meaning in suicide research context and pointed out limitations of this study.\\ 
+\section{Contributions of the experiment}
+There are three main contributions of this experiment:
+\begin{itemize}
+\item We built ML classifiers that used fewer features than existing work in literature but still produced state-of-the-art performance in the task of identifying people challenged by mental health problems who actually develop suicidal ideation on online forum. 
+\item We applied the same ML classifier in a more realistic scenario to see whether these classifiers are robust enough to act as a preliminary screening step for suicide risk in online forums or not. Out of three classifiers, Na\"ive Bayes seemed to be the most applicable but too many false positive instances remains a problem to be solved in the future.
+\item We observed that although at-risk people are less socially active online, they seemed to have active engagement in mental health communities. Furthermore, their language express more negative, pessimistic outlook and that may imply cognitive markers of suicidal ideation.
+\end{itemize}
+\section{Future directions}
+The application of NLP and ML to suicide prevention is still in its infancy. We believe that there are many ways to improve current approaches of predicting suicidal behaviours among online communiteis. For instance, semi-supervised learning can be used to generate more training examples. The idea of incorporating more sentiment features seem promising as well. We only have polarity scores as features in our model but sentiment analysis is advancing very fast and might give intensity scores of words/sentences with high accuracy in the future. Additionally, fine-grainded emotion detection is also a hot topics and certainly give useful features to similar classification tasks. If more data from other sources such as text-based or chat-based services can be retrieved easier, it will be beneficial to researchers as well considering general principle of ML "more data, more accurate". In addition, more efforts are needed to remedy the problem of misjudging posts with sarcasm or flippant references to suicide. Those kinds of posts make data noisy and as a consequence, false positives arised from such pitfall. \\
+Provided that some screening tools are reliable enough to be implemented in online forums, there are two aspects of design to aid the intervention. Human moderators of those forums should receive notifications in real time should any user is flagged as at high risk of suicidal behaviours to take actions them deemed appropriate, be it check out users' posting activity or connect to mental health professionals calling for further support. Another aspect to consider is promoting self-help of users. Those who seek helps on webchat services usually are given psychometrical questionnaires to auto assess their mental well-being and main challenge in life, thus giving listener more information to adjust their language of support. We can design similar features in forums, showing relevant external links and information related to suicide support to flagged users. This adaptive intervention may reduce the time and effort of help seekers in times of hardship.
+
+
+
 
