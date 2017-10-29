@@ -4,7 +4,7 @@
 %%    12 Jul 2007 - John Papandriopoulos - Converted into template
 %%
 
-\documentclass[11pt,a4paper,titlepage,twoside,openright]{book}
+\documentclass[11pt, a4paper, titlepage, oneside, openany]{book}
 
 % Use the UniMelb Dissertation Template
 \usepackage{style/uomthesis}
@@ -12,6 +12,15 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{bm}
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
 % For drafts uncomment the following line
 %\usepackage[light,timestamp,first]{draftcopy}
 
@@ -45,10 +54,10 @@
 		\makedeclaration
 
 		% Acknowledgements
-		\input{acknowledgements}
+		%\input{acknowledgements}
 
 		% Preface
-		\input{preface}
+		%\input{preface}
 
 		% Dedications...
 		\input{dedication}
@@ -85,22 +94,21 @@
 		%\input{part-2}
 	   
 		\input{chapter-5}
-		\input{chapter-6}
-		\input{chapter-7}
-
+		%\input{chapter-6}
+		%\input{chapter-7}
+		
+		%\nocite{*}
 		% Conclusion
-	   \input{chapter-8}
+	   	%\input{chapter-8}
 
 	\end{mainmatter}
 
 	%%
 	%% Appendix
 	%%
-	\begin{appendix}
-
-		\input{appendix}
-
-	\end{appendix}
+	%\begin{appendix}
+	%	\input{appendix}
+	%\end{appendix}
 
 	%%
 	%% Bibliography
@@ -115,7 +123,7 @@
 		\nocite{*}
 		%
 		\bibliographystyle{plain}
-		\bibliography{bib/My Collection}
+		\bibliography{bib/ref}
 	\end{backmatter}
 
 \end{document}
